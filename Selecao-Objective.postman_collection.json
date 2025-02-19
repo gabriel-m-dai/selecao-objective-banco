@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "d5dae78c-83be-4917-a837-5aee5b9d0857",
+		"name": "Selecao-Objective",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "18152455"
+	},
+	"item": [
+		{
+			"name": "get-conta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4213/conta?numero_conta=0235",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4213",
+					"path": [
+						"conta"
+					],
+					"query": [
+						{
+							"key": "numero_conta",
+							"value": "0235"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new-conta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numero\": \"0236\",\r\n    \"saldo\": 123.45\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4213/conta"
+			},
+			"response": []
+		},
+		{
+			"name": "post-transacao",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroDaConta\": \"0235\",\r\n    \"formaDePagamento\": \"P\",\r\n    \"valor\": 4.5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4213/transacao"
+			},
+			"response": []
+		}
+	]
+}
