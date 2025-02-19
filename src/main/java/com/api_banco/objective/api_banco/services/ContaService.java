@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ContaService {
-    @Autowired
-    private Repository repository;
+//    @Autowired
+//    private Repository repository;
 
-    public Conta obtemPorNumeroDaConta(String numero) {
-        return this.repository.findByNumero(numero).orElseThrow(() -> new RuntimeException("Conta não encontrada"));
+    public void obtemPorNumeroDaConta(String numero) {
+//        return this.repository.findByNumero(numero).orElseThrow(() -> new RuntimeException("Conta não encontrada"));
     }
 }

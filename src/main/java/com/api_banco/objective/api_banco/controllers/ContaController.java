@@ -12,8 +12,8 @@ public class ContaController {
     private ContaService service;
 
     @GetMapping("/{numero}")
-    public Conta getConta(@PathVariable String numero) {
-        return service.obtemPorNumeroDaConta(numero);
+    public void getConta(@PathVariable String numero) {
+//        return service.obtemPorNumeroDaConta(numero);
     }
 
 //    @PostMapping
