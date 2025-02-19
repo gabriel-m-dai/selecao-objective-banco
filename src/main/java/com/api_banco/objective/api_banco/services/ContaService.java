@@ -24,7 +24,27 @@ public class ContaService {
             response.Error = "Conta não encontrada";
             return response;
         }
+    }
 
+    public GenericResponse<Conta> criaConta(Conta conta) {
+        GenericResponse<Conta> response = new GenericResponse<Conta>();
+        try {
+            var contaExiste = this.repository.findByNumero(conta.getNumero());
 
+            if (contaExiste.isPresent()) {
+                response.Success = false;
+                response.Error = "Já existe uma conta com o mesmo número";
+                return response;
+            }
+
+            this.repository.save(conta);
+            response.Data = conta;
+            return response;
+        }
+        catch (Exception e) {
+            response.Success = false;
+            response.Error = "Erro ao criar conta";
+            return response;
+        }
     }
 }
