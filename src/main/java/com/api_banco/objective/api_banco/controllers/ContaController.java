@@ -1,11 +1,11 @@
 package com.api_banco.objective.api_banco.controllers;
 
 import com.api_banco.objective.api_banco.models.Conta;
+import com.api_banco.objective.api_banco.reponses.GenericResponse;
 import com.api_banco.objective.api_banco.services.ContaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/conta")
@@ -14,14 +14,9 @@ public class ContaController {
     private ContaService service;
 
     @GetMapping
-    public Conta getConta(@RequestParam(value = "numero_conta") String numero) {
-        try {
-            return service.obtemPorNumeroDaConta(numero);
-        }
-        catch (Exception e){
-            return new Conta("Conta não encotrada", 0.0f);
-        }
-
+    public ResponseEntity<Conta> getConta(@RequestParam(value = "numero_conta") String numero) {
+            var response = service.obtemPorNumeroDaConta(numero);
+            return response.Success ? ResponseEntity.ok().body(response.Data) : ResponseEntity.notFound();
     }
 
 //    @PostMapping
