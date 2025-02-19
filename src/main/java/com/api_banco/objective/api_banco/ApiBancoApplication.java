@@ -3,6 +3,7 @@ package com.api_banco.objective.api_banco;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class ApiBancoApplication {
 
