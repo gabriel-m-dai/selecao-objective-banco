@@ -1,10 +1,9 @@
-package com.api_banco.objective.api_banco.controllers;
+package com.api_banco.objective.controllers;
 
-import com.api_banco.objective.api_banco.enums.FormasPagamento;
-import com.api_banco.objective.api_banco.models.Conta;
-import com.api_banco.objective.api_banco.models.Transacao;
-import com.api_banco.objective.api_banco.reponses.GenericResponse;
-import com.api_banco.objective.api_banco.services.TransacaoService;
+import com.api_banco.objective.models.Conta;
+import com.api_banco.objective.models.Transacao;
+import com.api_banco.objective.reponses.GenericResponse;
+import com.api_banco.objective.services.TransacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +18,9 @@ public class TransacaoController {
     @PostMapping
     public ResponseEntity<GenericResponse<Conta>> executaTransacao(@RequestBody Transacao transacao) {
         var response = this.transacaoService.executaTransacao(transacao);
-        return response.Success ? new ResponseEntity<GenericResponse<Conta>>(response, HttpStatus.CREATED) : new ResponseEntity<GenericResponse<Conta>>(response, HttpStatus.NOT_FOUND);
+        return
+                response.Success ?
+                new ResponseEntity<GenericResponse<Conta>>(response, HttpStatus.CREATED) :
+                new ResponseEntity<GenericResponse<Conta>>(response, HttpStatus.NOT_FOUND);
     }
 }

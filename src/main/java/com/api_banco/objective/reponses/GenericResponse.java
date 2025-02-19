@@ -1,4 +1,4 @@
-package com.api_banco.objective.api_banco.reponses;
+package com.api_banco.objective.reponses;
 
 public class GenericResponse<T> {
     public T Data;

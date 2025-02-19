@@ -1,6 +1,6 @@
-package com.api_banco.objective.api_banco.models;
+package com.api_banco.objective.models;
 
-import com.api_banco.objective.api_banco.enums.FormasPagamento;
+import com.api_banco.objective.enums.FormasPagamento;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

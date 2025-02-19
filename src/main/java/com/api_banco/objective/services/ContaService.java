@@ -1,22 +1,24 @@
-package com.api_banco.objective.api_banco.services;
+package com.api_banco.objective.services;
 
-import com.api_banco.objective.api_banco.models.Conta;
-import com.api_banco.objective.api_banco.reponses.GenericResponse;
-import com.api_banco.objective.api_banco.repository.ContaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.api_banco.objective.infra.IUnitOfWork;
+import com.api_banco.objective.infra.UnitOfWork;
+import com.api_banco.objective.models.Conta;
+import com.api_banco.objective.reponses.GenericResponse;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class ContaService {
-    @Autowired
-    private ContaRepository repository;
+
+    private final UnitOfWork<Conta> unitOfWork;
+
+    public ContaService(UnitOfWork<Conta> unitOfWork) {
+        this.unitOfWork = unitOfWork;
+    }
 
     public GenericResponse<Conta> obtemPorNumeroDaConta(String numero) {
         GenericResponse<Conta> response = new GenericResponse<Conta>();
         try {
-            response.Data = this.repository.findByNumero(numero).orElseThrow(() -> new RuntimeException(""));
+            response.Data = this.unitOfWork.getContaRepository().findByNumero(numero).orElseThrow(() -> new RuntimeException(""));
             return response;
         }
         catch (Exception e) {
@@ -29,7 +31,7 @@ public class ContaService {
     public GenericResponse<Conta> criaConta(Conta conta) {
         GenericResponse<Conta> response = new GenericResponse<Conta>();
         try {
-            var contaExiste = this.repository.findByNumero(conta.getNumero());
+            var contaExiste = this.unitOfWork.getContaRepository().findByNumero(conta.getNumero());
 
             if (contaExiste.isPresent()) {
                 response.Success = false;
@@ -37,7 +39,7 @@ public class ContaService {
                 return response;
             }
 
-            this.repository.save(conta);
+            this.unitOfWork.commit(conta);
             response.Data = conta;
             return response;
         }
@@ -49,6 +51,6 @@ public class ContaService {
     }
 
     public void updateConta(Conta conta) {
-        this.repository.save(conta);
+        this.unitOfWork.commit(conta);
     }
 }

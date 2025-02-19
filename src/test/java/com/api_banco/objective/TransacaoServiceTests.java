@@ -1,10 +1,10 @@
-package com.api_banco.objective.api_banco;
+package com.api_banco.objective;
 
-import com.api_banco.objective.api_banco.enums.FormasPagamento;
-import com.api_banco.objective.api_banco.models.Conta;
-import com.api_banco.objective.api_banco.models.Transacao;
-import com.api_banco.objective.api_banco.services.ContaService;
-import com.api_banco.objective.api_banco.services.TransacaoService;
+import com.api_banco.objective.enums.FormasPagamento;
+import com.api_banco.objective.models.Conta;
+import com.api_banco.objective.models.Transacao;
+import com.api_banco.objective.services.ContaService;
+import com.api_banco.objective.services.TransacaoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

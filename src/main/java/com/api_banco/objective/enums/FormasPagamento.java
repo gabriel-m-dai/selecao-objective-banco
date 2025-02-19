@@ -1,4 +1,4 @@
-package com.api_banco.objective.api_banco.enums;
+package com.api_banco.objective.enums;
 
 public enum FormasPagamento {
     D,

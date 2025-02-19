@@ -1,7 +1,7 @@
-package com.api_banco.objective.api_banco;
+package com.api_banco.objective;
 
-import com.api_banco.objective.api_banco.models.Conta;
-import com.api_banco.objective.api_banco.services.ContaService;
+import com.api_banco.objective.models.Conta;
+import com.api_banco.objective.services.ContaService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

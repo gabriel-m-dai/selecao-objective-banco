@@ -1,4 +1,4 @@
-package com.api_banco.objective.api_banco.models;
+package com.api_banco.objective.models;
 
 import jakarta.persistence.*;
 

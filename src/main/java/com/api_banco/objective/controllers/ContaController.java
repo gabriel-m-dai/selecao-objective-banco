@@ -1,8 +1,8 @@
-package com.api_banco.objective.api_banco.controllers;
+package com.api_banco.objective.controllers;
 
-import com.api_banco.objective.api_banco.models.Conta;
-import com.api_banco.objective.api_banco.reponses.GenericResponse;
-import com.api_banco.objective.api_banco.services.ContaService;
+import com.api_banco.objective.models.Conta;
+import com.api_banco.objective.reponses.GenericResponse;
+import com.api_banco.objective.services.ContaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,12 +17,18 @@ public class ContaController {
     @GetMapping
     public ResponseEntity<GenericResponse<Conta>> getConta(@RequestParam(value = "numero_conta") String numero) {
             var response = service.obtemPorNumeroDaConta(numero);
-            return response.Success ? new ResponseEntity<GenericResponse<Conta>>(response, HttpStatus.OK) : new ResponseEntity<GenericResponse<Conta>>(response, HttpStatus.NOT_FOUND);
+            return
+                    response.Success ?
+                    new ResponseEntity<GenericResponse<Conta>>(response, HttpStatus.OK) :
+                    new ResponseEntity<GenericResponse<Conta>>(response, HttpStatus.NOT_FOUND);
     }
 
     @PostMapping
     public ResponseEntity<GenericResponse<Conta>> postConta(@RequestBody Conta conta) {
         var response = service.criaConta(conta);
-        return response.Success ? new ResponseEntity<GenericResponse<Conta>>(response, HttpStatus.CREATED) : new ResponseEntity<GenericResponse<Conta>>(response, HttpStatus.BAD_REQUEST);
+        return
+                response.Success ?
+                new ResponseEntity<GenericResponse<Conta>>(response, HttpStatus.CREATED) :
+                new ResponseEntity<GenericResponse<Conta>>(response, HttpStatus.BAD_REQUEST);
     }
 }
