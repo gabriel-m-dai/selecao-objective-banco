@@ -31,8 +31,8 @@ public class TransacaoServiceTests {
     @Test
     public void executaTransacaoCreditoCobraTaxaCincoPorcento() {
         var saldo = 180.37f;
-        Transacao transacao = new Transacao(FormasPagamento.C, "0235", 10f);
-        Conta conta = new Conta("0235", saldo);
+        Transacao transacao = new Transacao(FormasPagamento.C, "0236", 10f);
+        Conta conta = new Conta("0236", saldo);
         this.contaService.criaConta(conta);
 
         var response = this.transacaoService.executaTransacao(transacao);
@@ -44,8 +44,8 @@ public class TransacaoServiceTests {
     @Test
     public void executaTransacaoDebitoCobraTaxaTresPorcento() {
         var saldo = 100.3f;
-        Transacao transacao = new Transacao(FormasPagamento.D, "0235", 10f);
-        Conta conta = new Conta("0235", saldo);
+        Transacao transacao = new Transacao(FormasPagamento.D, "0237", 10f);
+        Conta conta = new Conta("0237", saldo);
         this.contaService.criaConta(conta);
 
         var response = this.transacaoService.executaTransacao(transacao);
@@ -56,7 +56,7 @@ public class TransacaoServiceTests {
 
     @Test
     public void executaTransacaoRetornaErroContaInexistente() {
-        Transacao transacao = new Transacao(FormasPagamento.P, "0235", 4.5f);
+        Transacao transacao = new Transacao(FormasPagamento.P, "0238", 4.5f);
 
         var response = this.transacaoService.executaTransacao(transacao);
 
@@ -66,8 +66,8 @@ public class TransacaoServiceTests {
 
     @Test
     public void executaTransacaoRetornaErroSaldoInsuficiente() {
-        Transacao transacao = new Transacao(FormasPagamento.P, "0235", 50f);
-        Conta conta = new Conta("0235", 45f);
+        Transacao transacao = new Transacao(FormasPagamento.P, "0239", 50f);
+        Conta conta = new Conta("0239", 45f);
         this.contaService.criaConta(conta);
 
         var response = this.transacaoService.executaTransacao(transacao);

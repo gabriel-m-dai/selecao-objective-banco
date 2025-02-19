@@ -20,9 +20,9 @@ public class ContaServiceTests {
 
     @Test
     void insereContaComNumeroRepetidoRetornaErro() {
-        var conta1 = new Conta("1234", 456.57f);
+        var conta1 = new Conta("1235", 456.57f);
         var response1 = this.contaService.criaConta(conta1);
-        var conta2 = new Conta("1234", 237.02f);
+        var conta2 = new Conta("1235", 237.02f);
         var response2 = this.contaService.criaConta(conta2);
         assert response1.Data != null;
         assert response2.Data == null;

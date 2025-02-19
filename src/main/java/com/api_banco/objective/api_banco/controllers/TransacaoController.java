@@ -6,6 +6,8 @@ import com.api_banco.objective.api_banco.models.Transacao;
 import com.api_banco.objective.api_banco.reponses.GenericResponse;
 import com.api_banco.objective.api_banco.services.TransacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,7 +17,8 @@ public class TransacaoController {
     private TransacaoService transacaoService;
 
     @PostMapping
-    public GenericResponse<Conta> executaTransacao(@RequestBody Transacao transacao) {
-        return this.transacaoService.executaTransacao(transacao);
+    public ResponseEntity<GenericResponse<Conta>> executaTransacao(@RequestBody Transacao transacao) {
+        var response = this.transacaoService.executaTransacao(transacao);
+        return response.Success ? new ResponseEntity<GenericResponse<Conta>>(response, HttpStatus.CREATED) : new ResponseEntity<GenericResponse<Conta>>(response, HttpStatus.NOT_FOUND);
     }
 }
