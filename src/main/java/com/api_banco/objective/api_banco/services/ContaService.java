@@ -47,4 +47,8 @@ public class ContaService {
             return response;
         }
     }
+
+    public void updateConta(Conta conta) {
+        this.repository.save(conta);
+    }
 }

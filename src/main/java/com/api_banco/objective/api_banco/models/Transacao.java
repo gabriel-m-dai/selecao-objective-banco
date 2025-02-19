@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Transacao {
-    private FormasPagamento formaDePagamaneto;
+    private FormasPagamento formaDePagamento;
     private String numeroDaConta;
     private Float valor;
 }
